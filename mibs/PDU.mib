@@ -1,0 +1,367 @@
+LIEBERT-UPSTATION-D-UPS-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+   MODULE-IDENTITY,enterprises, 
+   IpAddress ,Integer32		   					FROM SNMPv2-SMI
+   Ipv6Address 									FROM IPV6-TC
+   -- Gauge, TimeTicks     						FROM RFC1155-SMI
+   DisplayString                                FROM SNMPv2-TC
+   OBJECT-TYPE                                  FROM RFC-1212
+   NOTIFICATION-TYPE                        	FROM SNMPv2-SMI
+   -- TRAP-TYPE                                 FROM RFC-1215
+   SnmpSecurityModel,
+   SnmpMessageProcessingModel,
+   SnmpSecurityLevel,
+   SnmpAdminString				      			FROM SNMP-FRAMEWORK-MIB
+   KeyChange									FROM SNMP-USER-BASED-SM-MIB
+   TEXTUAL-CONVENTION							FROM SNMPv2-TC
+   MODULE-COMPLIANCE, OBJECT-GROUP , 
+   NOTIFICATION-GROUP      						FROM SNMPv2-CONF;
+
+sysBasicInfo MODULE-IDENTITY
+    LAST-UPDATED ""
+    ORGANIZATION "Changsui"
+    CONTACT-INFO
+                  ""
+    DESCRIPTION
+        ""
+
+	REVISION 	""
+	DESCRIPTION
+        ""
+    ::= { Changsui 1 }   
+    
+sysDetails MODULE-IDENTITY
+    LAST-UPDATED ""
+    ORGANIZATION "Changsui"
+    CONTACT-INFO
+                  ""
+    DESCRIPTION
+        ""
+
+	REVISION 	""
+	DESCRIPTION
+        ""
+    ::= { Changsui 20 }  
+  
+Changsui                   OBJECT IDENTIFIER ::=  { enterprises 12345 }
+product                    OBJECT IDENTIFIER ::=  { sysBasicInfo 678 }
+setup                      OBJECT IDENTIFIER ::=  { sysBasicInfo 789 }
+ippdu1                     OBJECT IDENTIFIER ::=  { sysDetails  0 }
+
+  -- ON-OFF          ::=   INTEGER { ON(1), OFF(0) }
+  
+name    OBJECT-TYPE
+   SYNTAX DisplayString
+   MAX-ACCESS read-only
+   STATUS current
+   DESCRIPTION
+      "Name of product. e.g. PICDEM.net etc."
+   ::= { product 1 }
+   
+
+version    OBJECT-TYPE
+   SYNTAX DisplayString
+   MAX-ACCESS read-only
+   STATUS current
+   DESCRIPTION
+      "Version string. e.g. 1.0"
+   ::= { product 2 }
+   
+date    OBJECT-TYPE
+   SYNTAX DisplayString
+   MAX-ACCESS read-only
+   STATUS current
+   DESCRIPTION
+      "Date of version"
+   ::= { product 3 }
+   
+voltage OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 1 }
+    
+current OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 2 }  
+    
+power OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 3 } 
+    
+pf OBJECT-TYPE
+    SYNTAX INTEGER {0..1000}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 4 }  
+    
+energy OBJECT-TYPE
+    SYNTAX INTEGER {0..2147483647}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 5 } 
+    
+frequency OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 6 } 
+    
+minvol OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 7 }  
+    
+maxvol OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 8 } 
+    
+mincur OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 9 } 
+    
+maxcur OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 10 } 
+    
+mintemp OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 11 }
+    
+maxtemp OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 12 }
+    
+minhum OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 13 }
+    
+maxhum OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 14 }
+    
+temperature0 OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 15 } 
+
+humidity0 OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 16 }   
+
+temperature1 OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 17 } 
+
+humidity1 OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 18 } 
+    
+temperature2 OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 19 } 
+
+humidity2 OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 20 } 
+
+temperature3 OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 21 } 
+
+humidity3 OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 22 } 
+    
+temperature4 OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 23 } 
+
+humidity4 OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 24 } 
+    
+temperature5 OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 25 } 
+
+humidity5 OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 26 } 
+   
+temperature6 OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 27 } 
+
+humidity6 OBJECT-TYPE
+    SYNTAX INTEGER {0..65535}
+    MAX-ACCESS read
+    STATUS current
+    DESCRIPTION 
+        ""
+    ::= { ippdu1 28 }                             
+
+
+ipv4TrapTable OBJECT-TYPE
+    SYNTAX SEQUENCE OF IPv4TrapEntry
+    MAX-ACCESS not-accessible
+    STATUS current
+    DESCRIPTION
+        "Trap table for IPv4 Destination address configuration"
+    ::= { setup 1 }        
+    
+ipv4TrapEntry OBJECT-TYPE
+    SYNTAX IPv4TrapEntry
+    MAX-ACCESS not-accessible
+    STATUS current
+    DESCRIPTION
+        "Single trap entry containing trap receiver info."
+    INDEX { ipv4TrapReceiverNumber }
+     ::= { ipv4TrapTable 1 }
+     
+IPv4TrapEntry ::=
+    SEQUENCE {
+        ipv4TrapReceiverNumber
+            Integer32,
+        ipv4TrapEnabled
+            Integer32,
+        ipv4TrapReceiverIPAddress
+            IpAddress,
+        ipv4TrapCommunity
+            DisplayString
+    }            
+    
+ipv4TrapReceiverNumber  OBJECT-TYPE
+
+    SYNTAX Integer32(0.. 4)
+    MAX-ACCESS not-accessible
+    STATUS current
+    DESCRIPTION
+        "Index of trap receiver"
+    ::= { ipv4TrapEntry 1 }
+    
+ipv4TrapEnabled OBJECT-TYPE
+    SYNTAX INTEGER { no(0),yes(1) }
+    MAX-ACCESS read-write
+    STATUS current
+    DESCRIPTION
+        "Indicates if this trap entry is enabled or not."
+    ::= { ipv4TrapEntry 2 }
+
+
+ipv4TrapReceiverIPAddress OBJECT-TYPE
+    SYNTAX  IpAddress
+    MAX-ACCESS  read-write
+    STATUS current
+    DESCRIPTION
+        "Trap receiver IP address"
+    ::= { ipv4TrapEntry 3 }
+
+ipv4TrapCommunity OBJECT-TYPE
+    SYNTAX  DisplayString (SIZE (0..7))
+    MAX-ACCESS  read-write
+    STATUS current
+    DESCRIPTION
+        "Trap community to be used by agent to send trap"
+    ::= { ipv4TrapEntry 4 }
+
+END   
