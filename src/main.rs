@@ -20,8 +20,6 @@ fn main() -> io::Result<()> {
         }
     };
 
-    fs::remove_file(file_path)?;
-
     let filename = file_path
         .rsplit_once('.')
         .map(|(name, _)| name.replace("/", "-").to_uppercase())
@@ -100,4 +98,3 @@ where
     let reader = BufReader::new(file);
     reader.lines().collect()
 }
-
