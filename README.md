@@ -14,20 +14,34 @@ This tool is designed to generate 32 MIB files, including both master and slave 
 
 ## Getting Started
 
-### 1. Build the Docker Image
+You have two options to run the generator container:
 
-To build the Docker image for the generator, run the following command:
+### Option 1: Build the Docker Image Manually
+
+Build the Docker image locally with:
 
 ```bash
-docker build -t generator:pdu .
+docker build -t pdu-mib-gen:latest .
 ```
 
-### 2. Generate MIB Files
-
-Once the image is built, you can generate the MIB files using:
+Generate the MIB files using:
 
 ```bash
-docker run --rm -v $(pwd):/opt generator:pdu <mib_file>
+docker run --rm -v $(pwd):/opt pdu-mib-gen:latest <mib_file>
+```
+
+### Option 2: Use the Prebuilt Image
+
+Pull the prebuilt image from Docker Hub:
+
+```bash
+docker pull rlggyp/pdu-mib-gen:latest
+```
+
+Generate the MIB files using:
+
+```bash
+docker run --rm -v $(pwd):/opt rlggyp/pdu-mib-gen:latest <mib_file>
 ```
 
 Replace `<mib_file>` with the path to your input MIB file.
